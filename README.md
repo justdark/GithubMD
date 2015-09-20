@@ -6,6 +6,7 @@ A Chrome extension to replace the default Github markdown render result, support
 Drag the GithubMD.crx into your chrome extension page to install it.
 
 When get into a *md file,you can see a button called GithubMD.
+
 (refresh if you can't see it. it's a problem because github use ajax to load file content, I can't change its elements if you don't refresh it)
 
 ![img](https://raw.githubusercontent.com/justdark/GithubMD/master/effect.png)
