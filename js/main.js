@@ -59,10 +59,6 @@ mdButton.addEventListener('click',function () {
   {
         ajaxRequest(href,'githubMD');
         mdButtonClick = true
-  } else
-  {
-    document.getElementById("readme").childNodes[1].innerHTML = oldHTML;
-    mdButtonClick = false
   }
     },false); 
 
