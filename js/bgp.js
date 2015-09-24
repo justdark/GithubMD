@@ -27,10 +27,24 @@ details.responseHeaders.push({name:'Access-Control-Allow-Origin',value:"*"});
     for( var i = 0, l = details.responseHeaders.length; i < l; ++i ) {
       if( details.responseHeaders[i].name == 'Content-Security-Policy' ) {
         details.responseHeaders[i].value = "";
-        // console.log(headers[i].value);
         break;
       }}
       
-console.log(details.responseHeaders)
+// console.log(details.responseHeaders)
   return {responseHeaders:details.responseHeaders};
   },{urls: ["<all_urls>"]}, ["responseHeaders","blocking"]);
+
+chrome.webRequest.onCompleted.addListener(function(details) {
+	  console.log('asd');
+      chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+      	if (tabs.length>0)
+      	{
+      		for ( var j = 0, l = tabs.length; j < l; ++j ) {
+      		console.log(tabs[j].id);
+			chrome.tabs.sendMessage(tabs[j].id, {greeting: "hello"});
+			}
+		}
+        });
+// console.log(details.responseHeaders)
+  return {responseHeaders:details.responseHeaders};
+  },{urls: ["<all_urls>"]});

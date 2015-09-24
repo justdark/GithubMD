@@ -46,6 +46,36 @@ function ajaxRequest(url,ids)
     }
 }
 
+
+chrome.runtime.onMessage.addListener(
+function(request) {
+
+  // console.log(document.getElementById('mdButton')==null)
+  // console.log(document.getElementById('raw-url')!=null)
+if (document.getElementById('mdButton')==null && document.getElementById('raw-url')!=null && document.getElementById('raw-url').getAttribute('href').substr(-2,2)=='md')
+{
+  // console.log('xxxx');
+    raws = document.getElementById('raw-url');
+    var mdButton = document.createElement('a');
+    mdButton.innerHTML = "GithubMD";
+    mdButton.setAttribute("class","btn btn-sm ");
+    mdButton.id = "mdButton";
+
+    href = 'https://github.com'+raws.getAttribute('href');
+    console.log(href)
+    mdButton.addEventListener('click',function () {
+      if (mdButtonClick==false)
+      {
+            ajaxRequest(href,'githubMD');
+            mdButtonClick = true
+      }
+        },false); 
+
+    raws.parentNode.insertBefore(mdButton,raws);
+}
+});
+if (document.getElementById('mdButton')==null && document.getElementById('raw-url')!=null && document.getElementById('raw-url').getAttribute('href').substr(-2,2)=='md')
+{
 raws = document.getElementById('raw-url');
 var mdButton = document.createElement('a');
 mdButton.innerHTML = "GithubMD";
@@ -63,5 +93,6 @@ mdButton.addEventListener('click',function () {
     },false); 
 
 raws.parentNode.insertBefore(mdButton,raws)
+}
 // document.getElementById('readme').innerHTML =
 //       marked('# Marked in browser\n\nRendered by **marked**.');

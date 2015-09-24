@@ -4,7 +4,7 @@
   "version": "0.1",  
   "description": "a markdown style to replace the github version, support math equations and code highlight", 
   "content_scripts": [{
-   "matches": ["https://github.com/*md"], 
+   "matches": ["https://github.com/*"], 
    "js": ["js/marked.js","js/markdown.js","js/main.js"], 
    "css": ["css/main.css"],
     "run_at": "document_end",
@@ -12,7 +12,7 @@
    }],
    "web_accessible_resources":["page.html","js/sub.js"],
    "permissions": [
-    "https://github.com/*md","webRequest","webRequestBlocking"
+    "tabs","https://github.com/*","webRequest","webRequestBlocking"
     ],
   "background" :{
     "scripts": ["js/bgp.js"],
